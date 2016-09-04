@@ -1,7 +1,7 @@
 class ProfilesController < ApplicationController
   def show
   	@profile = Profile.find(params[:id])
-render :layout => false
+		render :layout => false
   #respond_to do |format|
   #    format.html
   #    format.json { render "_modal.html.erb", :layout => false }
@@ -15,7 +15,7 @@ render :layout => false
 	def update
 		@profile = Profile.find(params[:id])
 		@profile.update(profile_params)
-		redirect_to @profile
+		redirect_to :root
 	end
 
 	def profile_params

@@ -1,21 +1,31 @@
 <%= form_for(@profile) do |f| %>
-	<%= f.label :name %>
-	<%= f.text_field :name %>
-	<%= f.label :email %>
-	<%= f.email_field :email %>
-	<%= f.label :phone_number %>
-	<%= f.text_field :phone_number %>
-	<%= f.label :seat_number %>
-	<%= f.number_field :seat_number, :disabled => @profile.persisted? %>
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, :class => "form-control", :disabled => true %>
+  </div>
+  <div class="form-group">
+    <%= f.label :phone_number %>
+    <%= f.text_field :phone_number, :class => "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :facebook %>
+    <%= f.text_field :facebook, :class => "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :twitter %>
+    <%= f.text_field :twitter, :class => "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :github %>
+    <%= f.text_field :github, :class => "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :blog %>
+    <%= f.text_field :blog, :class => "form-control" %>
+  </div>
 
-
-	<%= f.label :facebook %>
-	<%= f.text_field :facebook %>
-	<%= f.label :twitter %>
-	<%= f.text_field :twitter %>
-	<%= f.label :github %>
-	<%= f.text_field :github %>
-	<%= f.label :blog %>
-	<%= f.text_field :blog %>
-	<%= f.submit "올리기" %>
+  <div class="text-right">
+    <%= link_to "취소", :root, class: 'btn btn-default btn-lg' %>
+	  <button type="submit" class="btn btn-primary btn-lg">변경</button>
+  </div>
 <% end %>
