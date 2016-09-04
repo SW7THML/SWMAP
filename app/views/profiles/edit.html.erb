@@ -1,4 +1,4 @@
-<%= form_for(@profile) do |f| %>
+<%= form_for(@profile, html: {multipart: true}) do |f| %>
   <div class="form-group">
     <%= f.label :name %>
     <%= f.text_field :name, :class => "form-control", :disabled => true %>
@@ -22,6 +22,15 @@
   <div class="form-group">
     <%= f.label :blog %>
     <%= f.text_field :blog, :class => "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :avatar %>
+		<%= f.file_field :avatar, :class => "form-control" %>
+		<% if @profile.avatar.present? %>
+			<h5>* 이전 이미지</h5>
+			<%= image_tag @profile.avatar.url(:thumb) %>
+		<% end %>
   </div>
 
   <div class="text-right">

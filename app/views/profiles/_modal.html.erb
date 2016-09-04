@@ -18,7 +18,17 @@
 			</div>
 
 			<div class="modal-body">
-				<form class="form-horizontal">
+        <form class="form-horizontal">
+          <% if @profile.avatar.present? %>
+            <div class="form-group">
+              <label class="col-sm-3 control-label"> Avatar</label>
+              <div class="col-sm-9">
+                <div class="thumbnail">
+                  <%= image_tag @profile.avatar.url %>
+                </div>
+              </div>
+            </div>
+          <% end %>
 					<div class="form-group">
 						<label class="col-sm-3 control-label"> Email</label>
 						<div class="col-sm-9">
