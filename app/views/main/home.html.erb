@@ -1,6 +1,8 @@
-<h1>Main#home</h1>
-<p>Find me in app/views/main/home.html.erb</p>
-
+<% @profiles.each do |p| %>
+<div class="section">
+		<%= p.name %>
+</div>
+<% end %>
 
 <!--
 <% if user_signed_in? %>
