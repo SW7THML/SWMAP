@@ -15,6 +15,39 @@
   </head>
 
   <body>
+	<nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">SW Map</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+
+        <% if @enable_search %>
+  				<%= form_tag :root, method: 'get', class: 'navbar-form navbar-right' do %>
+  					<div class="form-group">
+  						<%= fa_icon "search" %>
+  						<%= text_field_tag :query, params[:query], class: "form-control", :placeholder => "연수생 이름 예) 배지운" %>
+  					</div>
+
+  					<%= submit_tag "찾기", class: 'btn btn-primary' %>
+  				<% end %>
+        <% end %>
+        </div><!--/.navbar-collapse -->
+      </div>
+    </nav>
+
+<div class="container">
     <%= yield %>
+
+		<footer>
+        <p>&copy; 2016 Company, Inc.</p>
+      </footer>
+</div>
   </body>
 </html>

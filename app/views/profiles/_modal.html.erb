@@ -2,7 +2,7 @@
 	$("#new_comment").on("ajax:success", function(e, data, status, xhr) {
 		$('#comment_commenter').val('');
 		$('#comment_body').val('');
-    	$(".comments").append("<strong>Name:</strong> " + data.commenter + " <strong>Comment:</strong> " + data.body + "<br>");
+		$(".comments").append("<strong>Name:</strong> " + data.commenter + " <strong>Comment:</strong> " + data.body + "<br>");
 	}).on("ajax:error", function(e, xhr, status, error) {
 		alert('이름은 3글자, 내용은 5글자 이상 입력해 주세요')
 	});
@@ -14,55 +14,56 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+        <h4 class="modal-title" id="myModalLabel"><%= @profile.name %></h4>
       </div>
+
       <div class="modal-body">
         <h3> <%= @profile.name %></h3>
 		<hr/>
-		<form class="form-horizontal">
-		  <div class="form-group">
-		    <label class="col-sm-3 control-label"> Email</label>
-		    <div class="col-sm-9">
-		      <p class="form-control-static"> <%= fa_icon "envelope-o" %> <%= @profile.email %></p>
-		    </div>
-		  </div>
-		  <div class="form-group">
-		    <label class="col-sm-3 control-label"> Phone</label>
-		    <div class="col-sm-9">
-		      <p class="form-control-static"> <%= fa_icon "phone" %> <%= @profile.phone_number %></p>
-		    </div>
-		  </div>
-		  <div class="form-group">
-		    <label class="col-sm-3 control-label"> Seat</label>
-		    <div class="col-sm-9">
-		      <p class="form-control-static"> <%= fa_icon "desktop" %> <%= @profile.seat_number %></p>
-		    </div>
-		  </div>
-		  <div class="form-group">
-		    <label class="col-sm-3 control-label"> Facebook</label>
-		    <div class="col-sm-9">
-		      <p class="form-control-static"> <%= fa_icon "facebook" %> <%= @profile.facebook %></p>
-		    </div>
-		  </div>
-		  <div class="form-group">
-		    <label class="col-sm-3 control-label"> Twitter</label>
-		    <div class="col-sm-9">
-		      <p class="form-control-static"> <%= fa_icon "twitter" %> <%= @profile.twitter %></p>
-		    </div>
-		  </div>
-		  <div class="form-group">
-		    <label class="col-sm-3 control-label"> Github</label>
-		    <div class="col-sm-9">
-		      <p class="form-control-static"> <%= fa_icon "github" %> <%= @profile.github %></p>
-		    </div>
-		  </div>
-		  <div class="form-group">
-		    <label class="col-sm-3 control-label"> Blog</label>
-		    <div class="col-sm-9">
-		      <p class="form-control-static"> <%= fa_icon "rss" %> <%= @profile.blog %></p>
-		    </div>
-		  </div>
-		  </form>
+				<form class="form-horizontal">
+				  <div class="form-group">
+				    <label class="col-sm-3 control-label"> Email</label>
+				    <div class="col-sm-9">
+				      <p class="form-control-static"> <%= fa_icon "envelope-o" %> <%= @profile.email %></p>
+				    </div>
+				  </div>
+				  <div class="form-group">
+				    <label class="col-sm-3 control-label"> Phone</label>
+				    <div class="col-sm-9">
+				      <p class="form-control-static"> <%= fa_icon "phone" %> <%= @profile.phone_number %></p>
+				    </div>
+				  </div>
+				  <div class="form-group">
+				    <label class="col-sm-3 control-label"> Seat</label>
+				    <div class="col-sm-9">
+				      <p class="form-control-static"> <%= fa_icon "desktop" %> <%= @profile.seat_number %></p>
+				    </div>
+				  </div>
+				  <div class="form-group">
+				    <label class="col-sm-3 control-label"> Facebook</label>
+				    <div class="col-sm-9">
+				      <p class="form-control-static"> <%= fa_icon "facebook" %> <%= @profile.facebook %></p>
+				    </div>
+				  </div>
+				  <div class="form-group">
+				    <label class="col-sm-3 control-label"> Twitter</label>
+				    <div class="col-sm-9">
+				      <p class="form-control-static"> <%= fa_icon "twitter" %> <%= @profile.twitter %></p>
+				    </div>
+				  </div>
+				  <div class="form-group">
+				    <label class="col-sm-3 control-label"> Github</label>
+				    <div class="col-sm-9">
+				      <p class="form-control-static"> <%= fa_icon "github" %> <%= @profile.github %></p>
+				    </div>
+				  </div>
+				  <div class="form-group">
+				    <label class="col-sm-3 control-label"> Blog</label>
+				    <div class="col-sm-9">
+				      <p class="form-control-static"> <%= fa_icon "rss" %> <%= @profile.blog %></p>
+				    </div>
+				  </div>
+				</form>
 
 		  <div class="form-group">
 			  <h2> Comments </h2>
@@ -87,9 +88,10 @@
 			<% end %>
 		  </div>
       </div>
+
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+        <%= link_to "수정", edit_profile_path(@profile), :class => "btn btn-primary" %>
       </div>
     </div>
   </div>

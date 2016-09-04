@@ -1,9 +1,7 @@
 <script type="text/javascript">
 		$(document).ready(function() {
-
 			$('.section').click(function(e) {
 				var id = $(this).data('id');
-
 				if(id)  {
 						$.ajax('/profiles/' + id).success(function(html) {
 							$('#modalContainer').html(html);	
@@ -16,37 +14,34 @@
 
 <div id="modalContainer"></div>
 
-<% @profiles.each_slice(12) do |p_row| %>
-	<div class="section_row">
-		<% p_row.each do |p| %>
-			<% if p != :pillar %>
-				<div class="section" style="display: inline" data-id="<%= p.id %>">
-					<% if @highlights.include?(p) %>
-						<strong><%= p.name %></strong>
-					<% else %>
-						<%= p.name %>
+<div class="row">
+<% [@left, @right].each do |group| %>
+<div class="col col-sm-6">
+		<% group.each do |p_rows| %>
+			<table class="table table-bordered group">
+				<tbody>
+					<% p_rows.each_slice(6) do |p_row| %>
+						<tr class="section_row">
+							<% p_row.each do |p| %>
+								<% if p != :pillar %>
+									<td class="section <%= "info" if @highlights.include?(p) %>" data-id="<%= p.id %>">
+										<%= p.name %>
+									</td>
+								<% else %>
+									<td class="section warning">
+									</td>
+								<% end %>
+							<% end %>
+						</tr>
 					<% end %>
-				</div>
-			<% else %>
-				<div class="section" style="display: inline">
-					<%= p.to_s %>
-				</div>
-			<% end %>
+				</t body>
+			</table>
 		<% end %>
-	</div>
+</div>
 <% end %>
+</div>
 
 <hr/>
-
-
-<%= form_tag :root, method: 'get', class: 'form-inline' do %>
-	<div class="form-group">
-		<%= label_tag :query, "연수생 찾기" %>
-		<%= text_field_tag :query, params[:query], class: "form-control" %>
-	</div>
-
-	<%= submit_tag "Search", class: 'btn btn-primary' %>
-<% end %>
 
 <!--
 <% if user_signed_in? %>

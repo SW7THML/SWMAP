@@ -16,6 +16,6 @@ class Profile < ActiveRecord::Base
 	def self.search(text)
     query = "%#{text}%"
 
-    self.where("name LIKE ?", query)
+    self.where("name LIKE ? OR phone_number LIKE ? OR email LIKE ?", query, query, query)
   end
 end
