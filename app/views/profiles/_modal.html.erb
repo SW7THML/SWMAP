@@ -65,29 +65,41 @@
 				  </div>
 				</form>
 
-		  <div class="form-group">
-			  <h2> Comments </h2>
-			  <div class="comments">
-				  <% @profile.comments.each do |comment| %>
-				  	<strong>Name:</strong>
-				  	<%= comment.commenter %>
-				  	<strong>Comment:</strong>
-				  	<%= comment.body %><br>
-				  <% end %>
-			  </div>
-		  </div>
-
-		  		  <div class="form-group">
-		  	<h2> Add a comment: </h2>
-		  	<%= form_for([@profile, @profile.comments.build], remote: true) do |f| %>
-  					<%= f.label :name %>
-    				<%= f.text_field :commenter %>
-  				    <%= f.label :Comment %>
-				    <%= f.text_field :body %>
-					<%= f.submit %>
+			
+			<h2> Comments </h2>
+			<% @profile.comments.each do |comment| %>		
+     		<div class="panel panel-default">
+     			<div class="panel-heading">
+     			  <span class="glyphicon glyphicon glyphicon-user
+" aria-hidden="true"></span>
+					  	<strong><%= comment.commenter %></strong>	  	
+			  		<span class="label label-warning" style = "float: right">
+<%= time_ago_in_words(comment.created_at) %></span>
+			  	</div>
+			  	<div class="panel-body">
+			  	<%= comment.body %><br>
+			  	<!-- <span style = "float: right">
+			  	<%= link_to 'Delete', [comment.profile, comment], method: :delete, data: { confirm: 'Are you sure?' }, remote: true %>
+			  	</span> -->
+		      </div>
+		    </div>
 			<% end %>
-		  </div>
-      </div>
+			
+				<%= form_for([@profile, @profile.comments.build], :class => "form-inline" remote: true) do |f| %>
+				<h2> Add a comment </h2>
+  			<div class="form-group">
+    			<%= f.label :name %>
+<!--     			<input type="text" class="form-control" id="Name2" placeholder="SWMaestro" size="12"> -->
+    			<%= f.text_field :commenter, :class => "form-control", :placeholder => "SWMaestro" :size="12"%>
+			  </div>
+  			<div class="form-group">
+    			<%= f.label :Comment %>
+    			<!-- <input type="text" class="form-control" id="Text2" size="32"> -->
+    			<%= f.text_field :body, :class => "form-control", :placeholder => "욕설을 자제해 주세요"%>
+			  </div>
+			  <%= f.submit class="btn- btn-default">
+				<% end %>
+				<br>
 
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
