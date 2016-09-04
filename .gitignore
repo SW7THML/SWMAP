@@ -21,3 +21,6 @@
 .byebug_history
 *.swp
 *.swo
+.rvmrc
+/public/system
+.DS_Store

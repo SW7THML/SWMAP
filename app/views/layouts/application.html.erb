@@ -7,15 +7,15 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-	<!-- Latest compiled and minified JavaScript -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="http://timeago.yarp.com/jquery.timeago.js"></script>
   </head>
 
   <body>
-	<nav class="navbar navbar-default navbar-fixed-top">
+    <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -28,26 +28,26 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
 
-        <% if @enable_search %>
-  				<%= form_tag :root, method: 'get', class: 'navbar-form navbar-right' do %>
-  					<div class="form-group">
-  						<%= fa_icon "search" %>
-  						<%= text_field_tag :query, params[:query], class: "form-control", :placeholder => "연수생 이름 예) 배지운" %>
-  					</div>
+          <% if @enable_search %>
+            <%= form_tag :root, method: 'get', class: 'navbar-form navbar-right' do %>
+              <div class="form-group">
+                <%= fa_icon "search" %>
+                <%= text_field_tag :query, params[:query], class: "form-control", :placeholder => "연수생 이름, 전화번호 등" %>
+              </div>
 
-  					<%= submit_tag "찾기", class: 'btn btn-primary' %>
-  				<% end %>
-        <% end %>
+              <%= submit_tag "찾기", class: 'btn btn-primary' %>
+            <% end %>
+          <% end %>
         </div><!--/.navbar-collapse -->
       </div>
     </nav>
 
-<div class="container">
-    <%= yield %>
+    <div class="container">
+      <%= yield %>
 
-		<footer>
+      <footer>
         <p>&copy; 2016 Company, Inc.</p>
       </footer>
-</div>
+    </div>
   </body>
 </html>

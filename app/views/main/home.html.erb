@@ -1,54 +1,55 @@
 <script type="text/javascript">
-		$(document).ready(function() {
-			$('.section').click(function(e) {
-				var id = $(this).data('id');
-				if(id)  {
-						$.ajax('/profiles/' + id).success(function(html) {
-							$('#modalContainer').html(html);	
-							$('#myModal').modal('show')
-						});
-				}
-			});
+	$(document).ready(function() {
+		$('.section').click(function(e) {
+			var id = $(this).data('id');
+			if(id)  {
+				$.ajax('/profiles/' + id).success(function(html) {
+					$('#modalContainer').html(html);	
+					$('#myModal').modal('show')
+					App.connect(id);
+				});
+			}
 		});
+	});
 </script>
 
 <div id="modalContainer"></div>
 
 <div class="row">
-<% [@left, @right].each do |group| %>
-<div class="col col-sm-6">
-		<% group.each do |p_rows| %>
-			<table class="table table-bordered group">
-				<tbody>
-					<% p_rows.each_slice(6) do |p_row| %>
-						<tr class="section_row">
-							<% p_row.each do |p| %>
-								<% if p != :pillar %>
-									<td class="section <%= "info" if @highlights.include?(p) %>" data-id="<%= p.id %>">
-										<%= p.name %>
-									</td>
-								<% else %>
-									<td class="section warning">
-									</td>
+	<% [@left, @right].each do |group| %>
+		<div class="col col-sm-6">
+			<% group.each do |p_rows| %>
+				<table class="table table-bordered group">
+					<tbody>
+						<% p_rows.each_slice(6) do |p_row| %>
+							<tr class="section_row">
+								<% p_row.each do |p| %>
+									<% if p != :pillar %>
+										<td class="section <%= "info" if @highlights.include?(p) %>" data-id="<%= p.id %>">
+											<%= p.name %>
+										</td>
+									<% else %>
+										<td class="section warning">
+										</td>
+									<% end %>
 								<% end %>
-							<% end %>
-						</tr>
-					<% end %>
-				</t body>
-			</table>
+							</tr>
+						<% end %>
+						</t body>
+					</table>
+				<% end %>
+			</div>
 		<% end %>
-</div>
-<% end %>
-</div>
+	</div>
 
-<hr/>
+	<hr/>
 
 <!--
 <% if user_signed_in? %>
-sign in <%= current_user.email %> 
-<%= link_to "Logout", destroy_user_session_path, :method => :delete %>
+	sign in <%= current_user.email %> 
+	<%= link_to "Logout", destroy_user_session_path, :method => :delete %>
 <% else %>
-no user
-<%= link_to "Login", new_user_session_path %>
+	no user
+	<%= link_to "Login", new_user_session_path %>
 <% end %>
 -->

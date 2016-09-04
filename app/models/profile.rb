@@ -15,6 +15,8 @@ class Profile < ActiveRecord::Base
   has_many :taggings
   has_many :tags, :through => :taggings
 
+  mount_uploader :avatar, AvatarUploader
+
 	def self.search(text)
     query = "%#{text}%"
 

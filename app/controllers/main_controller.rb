@@ -1,12 +1,12 @@
 class MainController < ApplicationController
-	before_filter :enable_search
+  before_filter :enable_search
 
   def home
-  	@highlights = if params[:query].blank?
-    	[]
-    else
-    	Profile.search(params[:query])
-    end
+    @highlights = if params[:query].blank?
+                    []
+                  else
+                    Profile.search(params[:query])
+                  end
 
 		@profiles = Profile.order(:seat_number => :desc).to_a
 		[0, 5, 11, 60, 65, 71, 96, 97].each do | pillar |
@@ -28,5 +28,6 @@ class MainController < ApplicationController
 
 		@left = @left.each_slice(12)
 		@right = @right.each_slice(12)
+
   end
 end
