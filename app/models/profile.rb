@@ -12,12 +12,14 @@
 
 class Profile < ActiveRecord::Base
   has_many :comments
+  has_many :taggings
+  has_many :tags, :through => :taggings
 
   mount_uploader :avatar, AvatarUploader
 
 	def self.search(text)
     query = "%#{text}%"
 
-    self.where("name LIKE ? OR phone_number LIKE ? OR email LIKE ?", query, query, query)
+    self.where("profiles.name LIKE ? OR profiles.phone_number LIKE ? OR profiles.email LIKE ?", query, query, query).to_a + self.joins(:tags).where("tags.name LIKE ?", query).to_a
   end
 end

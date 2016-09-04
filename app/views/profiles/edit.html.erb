@@ -23,6 +23,22 @@
     <%= f.label :blog %>
     <%= f.text_field :blog, :class => "form-control" %>
   </div>
+  <div class="form-group">
+    <%= f.label :tags %>
+    <button type="button" class="btn btn-link" data-toggle="modal" data-target="#tag-modal">
+    +
+    </button>
+    <div class="form-group">
+      <% @profile.tags.each_with_index do |tag, index| %>
+        <div class="tag">
+          <div class="tag-color" style="background-color: <%= tag.color %>">
+          </div>
+          <%= tag.name %>
+          <%= link_to "x", profile_tag_path(@profile, tag), method: :delete , class: "tag-remove"%>
+        </div>
+      <% end %>
+    </div>
+  </div>
 
   <div class="form-group">
     <%= f.label :avatar %>
@@ -39,3 +55,6 @@
 	  <button type="submit" class="btn btn-primary btn-lg">변경</button>
   </div>
 <% end %>
+
+
+<%= render 'tag_modal' %>
