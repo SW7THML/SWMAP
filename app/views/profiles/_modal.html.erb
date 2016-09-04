@@ -51,6 +51,12 @@
 				      <p class="form-control-static"> <%= fa_icon "rss" %> <%= @profile.blog %></p>
 				    </div>
 				  </div>
+				  <div class="form-group">
+				    <label class="col-sm-3 control-label"> Tags</label>
+				    <div class="col-sm-9">
+				      <p class="form-control-static"> <%= fa_icon "tag" %> <%= @profile.tags.map(&:name).join(", ") %> </p>
+				    </div>
+				  </div>
 				</form>
       </div>
 
