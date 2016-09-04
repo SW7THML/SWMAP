@@ -26,10 +26,11 @@
 
   <div class="form-group">
     <%= f.label :avatar %>
+    <%= f.hidden_field :avatar_cache %>
 		<%= f.file_field :avatar, :class => "form-control" %>
 		<% if @profile.avatar.present? %>
 			<h5>* 이전 이미지</h5>
-			<%= image_tag @profile.avatar.url(:thumb) %>
+			<%= image_tag @profile.avatar.url(:standard) %>
 		<% end %>
   </div>
 

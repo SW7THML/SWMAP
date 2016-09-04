@@ -1,0 +1,18 @@
+development:
+  cloud_name: hxlaggqkb
+  api_key: '231693491863842'
+  api_secret: 3WtmYuGn2D9GWJEhzdESkCK-w0k
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: hxlaggqkb
+  api_key: '231693491863842'
+  api_secret: 3WtmYuGn2D9GWJEhzdESkCK-w0k
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: hxlaggqkb
+  api_key: '231693491863842'
+  api_secret: 3WtmYuGn2D9GWJEhzdESkCK-w0k
+  enhance_image_tag: true
+  static_image_support: false
