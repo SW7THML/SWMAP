@@ -1,0 +1,27 @@
+<!-- Modal -->
+<div class="modal fade" id="tag-modal" tabindex="-1" role="dialog" aria-labelledby="tag-modal-label">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="tag-modal-label">태그 추가하기</h4>
+      </div>
+
+      <div class="modal-body">
+        <%= form_for [@profile, @profile.tags.build] do |f| %>
+          <div class="input-group">
+            <%= f.text_field :name, placeholder: "Tag", class: "form-control" %>
+
+            <span class="input-group-btn" id="color-picker">
+              <%= f.color_field :color, id: "tag_color",  class: "form-control", value: "#ffaa00" %>
+            </span>
+          </div>
+          <br>
+          <div class="form-group">
+            <%= f.submit "추가", class: "btn btn-block btn-primary" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

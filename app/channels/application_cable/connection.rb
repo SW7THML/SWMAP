@@ -8,7 +8,10 @@ module ApplicationCable
 
     protected
     def find_verified_user
-      if verified_user = env['warden'].user
+      #if verified_user = env['warden'].user
+      #logger.info cookies.to_s
+      #logger.info cookies['_swmap_session']
+      if verified_user = cookies['_swmap_session']
         verified_user
       else
         reject_unauthorized_connection

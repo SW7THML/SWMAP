@@ -12,13 +12,14 @@
 
 class Profile < ActiveRecord::Base
   has_many :comments
+  has_many :taggings
+  has_many :tags, :through => :taggings
 
-	has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
-	validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
+  mount_uploader :avatar, AvatarUploader
 
 	def self.search(text)
     query = "%#{text}%"
 
-    self.where("name LIKE ? OR phone_number LIKE ? OR email LIKE ?", query, query, query)
+    self.where("profiles.name LIKE ? OR profiles.phone_number LIKE ? OR profiles.email LIKE ?", query, query, query).to_a + self.joins(:tags).where("tags.name LIKE ?", query).to_a
   end
 end

@@ -20,8 +20,33 @@ table.group {
 		}
 }
 
+#color-picker {
+	width: 100px;
+}
+
 form.edit_profile {
 	width: $group-width;
-	margin: 30px auto
+	margin: 30px auto;
 
+	.tag {
+		float: left;
+		display: inline;
+	}
+
+	.tag-color {
+		float: left;
+		border-radius: 5px;
+		margin: 5px auto;
+		margin-right: 3px;
+		width: 10px;
+		height: 10px;
+	}
+
+	.tag-remove {
+		margin-right: 15px;
+	}
+}
+
+#tag-modal .modal-dialog {
+	width: 300px;
 }
