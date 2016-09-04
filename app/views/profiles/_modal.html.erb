@@ -80,6 +80,10 @@
 								<div class="panel-heading"><%= fa_icon "user" %> <%= comment.commenter %><span style="float: right"><%= time_ago_in_words(comment.created_at) %></span></div>
 								<div class="panel-body">
 									<%= comment.body %>
+									<span style="float: right">
+									<%= link_to 'Delete', [comment.profile, comment],
+									method: :delete, data: { confirm: 'Are you sure?' } %>
+									</span>
 								</div>
 							</div>
 						<% end %>

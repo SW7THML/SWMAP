@@ -21,7 +21,7 @@ class CommentsController < ApplicationController
 
 	def show
 		@profile = Profile.find(params[:profile_id])
-		render :layout => false
+		redirect_to root_path(@profile)
 	end
 
 	private
