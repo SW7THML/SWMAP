@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: users
+# Table name: admins
 #
 #  id                     :integer          not null, primary key
 #  email                  :string           default(""), not null
@@ -17,9 +17,10 @@
 #  updated_at             :datetime         not null
 #
 
-class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+require 'test_helper'
+
+class AdminTest < ActiveSupport::TestCase
+  # test "the truth" do
+  #   assert true
+  # end
 end
