@@ -4,6 +4,5 @@ Rails.application.routes.draw do
   root :to => "main#home"
 
   devise_for :users
-  resources :profiles do
-  	resources :comments
+  resources :profiles
 end
