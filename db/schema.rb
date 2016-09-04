@@ -33,11 +33,9 @@ ActiveRecord::Schema.define(version: 20160904040608) do
     t.string   "commenter"
     t.text     "body"
     t.integer  "profile_id"
-    t.index ["profile_id"], name: "index_comments_on_profile_id"
-    t.integer  "article_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["article_id"], name: "index_comments_on_article_id"
+    t.index ["profile_id"], name: "index_comments_on_profile_id"
   end
 
   create_table "profiles", force: :cascade do |t|
