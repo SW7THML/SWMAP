@@ -11,6 +11,7 @@
 #
 
 class Profile < ActiveRecord::Base
+  has_many :comments
 
 	def self.search(text)
     query = "%#{text}%"
