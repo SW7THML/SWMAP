@@ -1,0 +1,27 @@
+
+
+<% @profiles.each_slice(12) do |p_row| %>
+	<div class="section_row">
+		<% p_row.each do |p| %>
+			<% if p != :pillar %>
+				<div class="section" style="display: inline">
+					<%= p.name %>
+				</div>
+			<% else %>
+				<div class="section" style="display: inline">
+					<%= p.to_s %>
+				</div>
+			<% end %>
+		<% end %>
+	</div>
+<% end %>
+
+<!--
+<% if user_signed_in? %>
+sign in <%= current_user.email %> 
+<%= link_to "Logout", destroy_user_session_path, :method => :delete %>
+<% else %>
+no user
+<%= link_to "Login", new_user_session_path %>
+<% end %>
+-->
