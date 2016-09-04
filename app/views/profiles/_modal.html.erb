@@ -1,3 +1,13 @@
+<script type="text/javascript">
+	$("#new_comment").on("ajax:success", function(e, data, status, xhr) {
+		$('#comment_commenter').val('');
+		$('#comment_body').val('');
+    	$(".comments").append("<strong>Name:</strong> " + data.commenter + " <strong>Comment:</strong> " + data.body + "<br>");
+	}).on("ajax:error", function(e, xhr, status, error) {
+		alert('이름은 3글자, 내용은 5글자 이상 입력해 주세요')
+	});
+</script>
+
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
@@ -52,7 +62,30 @@
 		      <p class="form-control-static"> <%= fa_icon "rss" %> <%= @profile.blog %></p>
 		    </div>
 		  </div>
-		</form>
+		  </form>
+
+		  <div class="form-group">
+			  <h2> Comments </h2>
+			  <div class="comments">
+				  <% @profile.comments.each do |comment| %>
+				  	<strong>Name:</strong>
+				  	<%= comment.commenter %>
+				  	<strong>Comment:</strong>
+				  	<%= comment.body %><br>
+				  <% end %>
+			  </div>
+		  </div>
+
+		  		  <div class="form-group">
+		  	<h2> Add a comment: </h2>
+		  	<%= form_for([@profile, @profile.comments.build], remote: true) do |f| %>
+  					<%= f.label :name %>
+    				<%= f.text_field :commenter %>
+  				    <%= f.label :Comment %>
+				    <%= f.text_field :body %>
+					<%= f.submit %>
+			<% end %>
+		  </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
