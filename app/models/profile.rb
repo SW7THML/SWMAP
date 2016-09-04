@@ -12,4 +12,9 @@
 
 class Profile < ActiveRecord::Base
 
+	def self.search(text)
+    query = "%#{text}%"
+
+    self.where("name LIKE ?", query)
+  end
 end
