@@ -1,12 +1,8 @@
-<h3> <%= @profile.name %></h3>
-<hr/>
-<dl>
-	<dt> email </dt>
-	<dd> <%= @profile.email %></dd>
+<!-- Button trigger modal -->
+<!--
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+  Launch demo modal
+</button>
+-->
 
-	<dt> phone_number </dt>
-	<dd> <%= @profile.phone_number %> </dd>
-</dl>
-
-<%= link_to 'Back', root_path %>
-
+<%= render "modal" %>

@@ -14,5 +14,9 @@ Profile.destroy_all
 	p.email = "sw#{rand(100)}@gmail.com"
 	p.phone_number = "010-0000-%04i" % rand(1000)
 	p.seat_number = i
+	p.facebook = "fb.com/%06i" % rand(100000)
+	p.twitter = "https://twitter.com/%4i" % rand(1000)
+	p.github = "https://github.com/%4i" % rand(1000)
+	p.blog = "https://blog.me/%4i" % rand(1000)
 	p.save
 end
