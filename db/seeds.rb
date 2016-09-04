@@ -6,10 +6,13 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+Profile.destroy_all
+
 1.upto(100) do |i|
-p = Profile.new
-p.name = "김택민#{rand(100)}"
-p.email = "sw#{rand(100)}@gmail.com"
-p.phone_number = "010-0000-%04i" % rand(1000)
-p.save
+	p = Profile.new
+	p.name = "김택민#{rand(100)}"
+	p.email = "sw#{rand(100)}@gmail.com"
+	p.phone_number = "010-0000-%04i" % rand(1000)
+	p.seat_number = i
+	p.save
 end
